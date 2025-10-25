@@ -7,6 +7,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    .card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    body.dark-mode {
+  background: #121212;
+  color: #f4f4f4;
+}
+header.dark-mode, footer.dark-mode {
+  background: #1e1e1e;
+}
+.card.dark-mode {
+  background: #1e1e1e;
+  color: #f4f4f4;
+}
     body {
       font-family: 'Vazirmatn', sans-serif;
       margin: 0;
@@ -23,6 +50,7 @@
       z-index: 1000;
     }
     nav {
+      <button id="toggle-dark" style="background:none; border:none; color:white; cursor:pointer;">🌓 حالت تاریک</button>
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -94,6 +122,37 @@
   <section id="about">
     <h2>درباره من</h2>
     <p>من عاشق طراحی سایت‌های زیبا و کاربردی هستم. با HTML، CSS و JavaScript کار می‌کنم و همیشه دنبال یادگیری چیزهای جدیدم.</p>
+    <p>
+  <a href="resume.pdf" download style="background:#0072ff; color:white; padding:10px 20px; border-radius:5px; text-decoration:none;">
+    📄 دانلود رزومه من
+  </a>
+</p>
+    <section id="resume" style="background:#fff; padding:2rem; margin-top:2rem; border-radius:8px;">
+  <h2>رزومه من</h2>
+  <p><strong>نام:</strong> راضیه</p>
+  <p><strong>تخصص:</strong> توسعه‌دهنده وب (HTML, CSS, JavaScript)</p>
+  <p><strong>مهارت‌ها:</strong></p>
+  <ul>
+    <li>طراحی رابط کاربری (UI)</li>
+    <li>واکنش‌گرایی و ریسپانسیو</li>
+    <li>کار با Git و GitHub</li>
+    <li>آشنایی با SEO و بهینه‌سازی سایت</li>
+  </ul>
+  <p><strong>سوابق کاری:</strong></p>
+  <ul>
+    <li>طراحی سایت فروشگاهی برای مشتری خصوصی (2024)</li>
+    <li>ساخت سایت شخصی و انتشار در GitHub Pages (2025)</li>
+  </ul>
+  <p><strong>اطلاعات تماس:</strong> <br>
+    ایمیل: example@gmail.com <br>
+    تلفن: <a href="tel:09945185237">09945185237</a>
+  </p>
+  <p>
+    <a href="resume.pdf" download style="background:#0072ff; color:white; padding:10px 20px; border-radius:5px; text-decoration:none;">
+      📄 دانلود نسخه PDF رزومه
+    </a>
+  </p>
+</section>
   </section>
 
   <section id="portfolio">
@@ -111,11 +170,25 @@
   </section>
 
   <section id="contact">
-    <h2>تماس با من</h2>
-    <p>ایمیل: example@gmail.com</p>
-    <p>شبکه‌های اجتماعی: <i class="fab fa-instagram"></i> <i class="fab fa-github"></i></p>
-  </section>
+  <h2>تماس با من</h2>
 
+  <p>شماره تماس: <a href="tel:09945185237">09945185237</a></p>
+
+  <form action="#" method="post" style="max-width:500px; margin:auto;">
+    <label for="name">نام شما:</label><br>
+    <input type="text" id="name" name="name" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
+
+    <label for="email">ایمیل:</label><br>
+    <input type="email" id="email" name="email" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
+
+    <label for="message">پیام شما:</label><br>
+    <textarea id="message" name="message" rows="5" required style="width:100%; padding:8px; margin-bottom:10px;"></textarea><br>
+
+    <button type="submit" style="background:#0072ff; color:white; padding:10px 20px; border:none; border-radius:5px;">ارسال پیام</button>
+  </form>
+
+  <p style="text-align:center; margin-top:1rem;">شبکه‌های اجتماعی: <i class="fab fa-instagram"></i> <i class="fab fa-github"></i></p>
+</section>
   <section id="github-tutorial" class="tutorial">
     <h2>آموزش کامل کدنویسی با GitHub</h2>
     <h3>مراحل یادگیری:</h3>
@@ -135,5 +208,14 @@
   <footer>
     <p>© 2025 طراحی شده توسط من</p>
   </footer>
+  <script>
+  const toggleBtn = document.getElementById('toggle-dark');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('header').classList.toggle('dark-mode');
+    document.querySelector('footer').classList.toggle('dark-mode');
+    document.querySelectorAll('.card').forEach(card => card.classList.toggle('dark-mode'));
+  });
+</script>
 </body>
 </html>
